@@ -1,45 +1,62 @@
 # -*- coding: utf-8 -*-
+
+#Created on Tue Sep  1 11:10:25 2020
+
+#author: stuart
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 """
-Created on Tue Sep  1 11:10:25 2020
-
-@author: stuart
-"""
-
-
 # 1431. Kids With the Greatest Number of Candies
 #
-"""
-class Solution:
-    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
-        num_of_kids = candies
-        i = 0 # the number of kids 
-        while i < len(num_of_kids):
-            print("test")
-            i += 1
-  """          
+ 
+
 from typing import List
 
 class Solution:
-    def kidsWithCandies(self, candies: List[int]) -> int:
-        num_of_kids = candies
-        i = 0 # the number of kids 
-        while i < len(num_of_kids):
-            print("test")
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        l=len(candies)
+        ans=[]
+        y=0
+        i=0
+        while i < l: 
+            #k = num_of_kids[i]
+            if y <= candies[i]:
+                y = candies[i]
             i += 1
-        if i == len(num_of_kids):
-            return 
-            
-ans = Solution()
-print(ans.kidsWithCandies([14, 11, 22]))
-            
-
-
-
-
-
-
-
-
+        
+        for i in range(l): # seems same as while i < 1 method
+            if candies[i]+extraCandies >= y:
+                ans.append(True)
+            else:
+                ans.append(False)
+        return ans
+    
+answer = Solution()
+print(answer.kidsWithCandies([14,4,8],7))
+"""
 
 
 
