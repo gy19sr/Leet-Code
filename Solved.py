@@ -5,10 +5,31 @@
 #author: stuart
 
 
+# 1480. Running Sum of 1d Array
+from typing import List
 
+class Solution:
+    def runningSum(self, nums: List[int]) -> List[int]:
+        i = 0
+        total_addition = 0
+        leng = len(nums)
+        answer = []
+        while i < leng:     
+            answer.append(nums[i] + total_addition)
+            total_addition = total_addition + nums[i]
+            i += 1
+        return answer
 
+       # for i in range(l):
+            #print(i)
+          #  return(nums[i])
 
+            
 
+ans = Solution()
+print(ans.runningSum([1,2,3,4]))
+            
+        
 
 
 
