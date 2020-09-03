@@ -5,6 +5,30 @@
 #author: stuart
 
 
+
+# 136. Single Number
+
+from typing import List
+
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        answer = 0
+      #  j = 0
+        leng = len(nums)
+    #    while j < leng:
+        for i in range(leng):
+            if nums[i] == nums[0]:
+                print('pair')
+            else:
+                print('not pair')
+        #    j += 1
+        return answer
+
+ans = Solution()
+print(ans.singleNumber([2,2,3,3,5]))
+
+
+"""
 # 1480. Running Sum of 1d Array
 from typing import List
 
@@ -20,32 +44,10 @@ class Solution:
             i += 1
         return answer
 
-       # for i in range(l):
-            #print(i)
-          #  return(nums[i])
-
-            
-
 ans = Solution()
 print(ans.runningSum([1,2,3,4]))
-            
+"""         
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
