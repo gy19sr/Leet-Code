@@ -44,17 +44,41 @@ print(ans.moveZeroes([0,0,1]))
 """
 
 
-""" COME BACK TO IT
 # 136. Single Number
+# find the one that doesn't have a pair
 
-from typing import List
+# solution 1
+# dict
 
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-
+        d = {}
+        for number in nums:
+            if number not in d:
+                d[number] = 1
+            else:
+                d[number] += 1
+                
+        for key, value in d.items():
+            if value == 1:
+                return key 
+        
 ans = Solution()
-print(ans.singleNumber([2,2,3,3,5]))
-"""
+print(ans.singleNumber([2,5,3,3,2]))
+
+# solution 2
+# sets, sets are unique items
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        return 2 * sum(set(nums)) - sum(nums)
+        
+        
+ans = Solution()
+print(ans.singleNumber([1,1,2,2,3]))
+
+
+# solution 3
+
 
 
 
