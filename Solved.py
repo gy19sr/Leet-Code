@@ -11,6 +11,7 @@ from typing import List
 #283. Move Zeroes
 # using append() + pop() + index()
 # move zeros to the back of the list
+# look at difference between .pop() and .remove()
 
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
@@ -21,16 +22,25 @@ class Solution:
         i = 0
         while i < l:
             if nums[i] == 0:
-                nums.pop(i)
+                nums.remove(0)
                 nums.append(0)
+                
                 i += 1
             else:
                 i += 1
+        return nums
+        
+        #i = 0 
+        #if i < l and nums[i] == 0:
+         #   nums.append(0)
+          #  nums.pop(0)
+           # i += 1
+        #else:
+         #   i += 1
         #return nums
-    
         
 ans = Solution()
-print(ans.moveZeroes([0,1,0,3,6,8,0,11,12]))
+print(ans.moveZeroes([0,0,1]))
 """
 
 
