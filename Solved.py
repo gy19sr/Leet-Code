@@ -4,28 +4,48 @@
 
 #author: stuart
 
+from typing import List
 
 
+"""
+#283. Move Zeroes
+# using append() + pop() + index()
+# move zeros to the back of the list
+
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        
+        # Do not return anything, modify nums in-place instead.
+        
+        l = len(nums)
+        i = 0
+        while i < l:
+            if nums[i] == 0:
+                nums.pop(i)
+                nums.append(0)
+                i += 1
+            else:
+                i += 1
+        #return nums
+    
+        
+ans = Solution()
+print(ans.moveZeroes([0,1,0,3,6,8,0,11,12]))
+"""
+
+
+""" COME BACK TO IT
 # 136. Single Number
 
 from typing import List
 
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        answer = 0
-      #  j = 0
-        leng = len(nums)
-    #    while j < leng:
-        for i in range(leng):
-            if nums[i] == nums[0]:
-                print('pair')
-            else:
-                print('not pair')
-        #    j += 1
-        return answer
 
 ans = Solution()
 print(ans.singleNumber([2,2,3,3,5]))
+"""
+
 
 
 """
@@ -65,7 +85,6 @@ class Solution:
         y=0
         i=0
         while i < l: 
-            #k = num_of_kids[i]
             if y <= candies[i]:
                 y = candies[i]
             i += 1
