@@ -7,6 +7,39 @@
 from typing import List
 
 
+# 217. Contains Duplicate
+# find if array has any duplicates
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        d = {}
+        for number in nums:
+            if number not in d:
+                d[number] = 1
+            else:
+                d[number] += 1
+           
+        list2 = []
+        for key, value in d.items():
+            if value >= 2:
+                list2.append(True)
+            else:
+                list2.append(False)
+        
+        i = 0 
+        ans = True
+        ans2 = False
+        while i < len(list2):
+            if list2[i] == True:
+                return(ans)
+            else:
+                i += 1
+        return(ans2)
+            
+        
+ans = Solution()
+print(ans.containsDuplicate([2,14,6,11,0,1,5,19,13]))
+
 """
 #283. Move Zeroes
 # using append() + pop() + index()
@@ -44,6 +77,7 @@ print(ans.moveZeroes([0,0,1]))
 """
 
 
+"""
 # 136. Single Number
 # find the one that doesn't have a pair
 
@@ -78,8 +112,20 @@ print(ans.singleNumber([1,1,2,2,3]))
 
 
 # solution 3
+# duplicates
 
-
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        no_duplicate_list = []
+                for i in nums:
+                    if i not in no_duplicate_list:
+                        no_duplicate_list.append(i)
+                    else:
+                        no_duplicate_list.remove(i)
+                return no_duplicate_list.pop()
+ans = Solution()
+print(ans.singleNumber([1,1,2,2,3]))
+"""
 
 
 """
