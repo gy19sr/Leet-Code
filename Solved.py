@@ -6,7 +6,79 @@
 
 from typing import List
 
+# 1295. Find Numbers with Even Number of Digits
 
+# fun practice find how many even numbers
+class Solution:
+    def findNumbers(self, nums: List[int]) -> int:
+        ans = 0
+        i = 0
+        l = len(nums)
+        while i < l:
+            if nums[i] % 2 == 0:
+                ans + 1
+                ans += 1
+                i += 1
+            else:
+                i += 1
+        return ans
+        
+ans = Solution()
+print(ans.findNumbers([12,345,2,6,7896]))
+
+
+
+# now actual solution
+
+class Solution:
+    def findNumbers(self, nums: List[int]) -> int:
+        count = 0
+        i = 0
+        l = len(nums)
+        ans = []
+        number = 0
+        
+        for i in range(l):
+            number = nums[i]
+            while number > 1:
+                number = number / 10
+                count = count + 1
+            ans.append(count)
+            count = 0
+        
+        print(ans)
+    
+    
+    
+    
+    
+    
+ans = Solution()
+print(ans.findNumbers([12,345,2,6,7896]))
+
+"""
+# COME BACK TO IT
+# 1365. How Many Numbers Are Smaller Than the Current Number
+
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        ans = []
+        i = 0
+        l = len(nums)
+        y = 0 
+        while i < l:
+            if nums[i] >= list next value:
+                ans.append(1)
+            i += 1
+            
+        
+ans = Solution()
+print(ans.smallerNumbersThanCurrent([8,2,4,3,1]))
+"""
+
+
+
+"""
 # 217. Contains Duplicate
 # find if array has any duplicates
 
@@ -39,6 +111,7 @@ class Solution:
         
 ans = Solution()
 print(ans.containsDuplicate([2,14,6,11,0,1,5,19,13]))
+"""
 
 """
 #283. Move Zeroes
@@ -130,7 +203,7 @@ print(ans.singleNumber([1,1,2,2,3]))
 
 """
 # 1480. Running Sum of 1d Array
-from typing import List
+
 
 class Solution:
     def runningSum(self, nums: List[int]) -> List[int]:
@@ -153,10 +226,9 @@ print(ans.runningSum([1,2,3,4]))
 
 """
 # 1431. Kids With the Greatest Number of Candies
-#
+# print bool list of whether kids can have the most in the list
  
 
-from typing import List
 
 class Solution:
     def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
