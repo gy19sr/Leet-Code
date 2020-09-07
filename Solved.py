@@ -6,17 +6,45 @@
 
 from typing import List
 
-"""
+
 # 1266. Minimum Time Visiting All Points
 # have to vist all points in order from lowest to highest 
 # +1 vert +1 hor or +1 vert 
 class Solution:
     def minTimeToVisitAllPoints(self, points: List[List[int]]) -> int:
-"""
-  
+        #print(points)
+        #print(points[0])
+        #print(points[0][0])
+        # have to start from first value in array and go in that order
+        l_array = len(points)
+        first_value = 0
+        steps = 0
+        ans = []
+        for j in range(l_array):
+            first_value = points[j][i]
+            print("first", first_value)
+            print("points", points[1][j])
+            while first_value != points[1][i]: # need to sort out the one later +1
+                if first_value > points[1][i]:
+                    first_value -= 1
+                    steps -= 1
+                    #print("+1")
+                else:
+                    first_value += 1
+                    steps += 1
+                   # print("-1")
+            ans.append(steps)
+            print("steps", steps)
+        return ans # no idea why this isn't working
+            
+    
+    
+    
+ans=Solution()
+ans.minTimeToVisitAllPoints([[1,2],[3,4]])
         
 
-# COME BACK TO IT
+"""
 # 1365. How Many Numbers Are Smaller Than the Current Number
 
 class Solution:
@@ -38,7 +66,7 @@ class Solution:
         
 ans = Solution()
 print(ans.smallerNumbersThanCurrent([6,5,4,8]))
-
+"""
     
         
         
