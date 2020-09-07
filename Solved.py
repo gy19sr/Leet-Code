@@ -6,43 +6,76 @@
 
 from typing import List
 
+"""
+# 1290. Convert Binary Number in a linked list to Integer
 
+class Solution:
+    def getDecimalValue(self, head: ListNode) -> int:
+
+ans = Solution()
+print(ans.getDecimalValue([1,0,1]))
+
+"""
+# 1436. Destination City
+
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+        """
+        # could do a dict
+        d = {}
+        for number in nums:
+            if number not in d:
+                d[number] = 1
+            else:
+                d[number] += 1
+                
+        for key, value in d.items():
+            if value == 1:
+                return key 
+        
+        """
+        # could do pairs of the second values
+        states = [[]]
+        for i in range(len(paths)):
+                
+        for i in paths:
+            if paths[i][1] not in states[i][0]:
+                states.append(paths[i][1])
+            else:
+                states.remove(paths[i][1])
+        return states
+    
+        
+ans = Solution()
+print(ans.destCity([["London","New York"],["Lima","Sao Paulo"],["New York","Lima"]]))
+
+
+
+
+"""
 # 1266. Minimum Time Visiting All Points
 # have to vist all points in order from lowest to highest 
 # +1 vert +1 hor or +1 vert 
+# abs function prints absolute value
 class Solution:
     def minTimeToVisitAllPoints(self, points: List[List[int]]) -> int:
         #print(points)
         #print(points[0])
-        #print(points[0][0])
-        # have to start from first value in array and go in that order
-        l_array = len(points)
-        first_value = 0
-        steps = 0
-        ans = []
-        for j in range(l_array):
-            first_value = points[j][i]
-            print("first", first_value)
-            print("points", points[1][j])
-            while first_value != points[1][i]: # need to sort out the one later +1
-                if first_value > points[1][i]:
-                    first_value -= 1
-                    steps -= 1
-                    #print("+1")
-                else:
-                    first_value += 1
-                    steps += 1
-                   # print("-1")
-            ans.append(steps)
-            print("steps", steps)
-        return ans # no idea why this isn't working
-            
-    
-    
+        # print(points[0][0]) # first speaks to the coordinates pair second speaks to x or y
+        
+        
+        l=len(points)
+        ans=0
+        for i in range(l-1):
+            x=abs(points[i][0]-points[i+1][0])
+            y=abs(points[i][1]-points[i+1][1])
+            ans+=max(x,y)
+        return ans
+        
     
 ans=Solution()
-ans.minTimeToVisitAllPoints([[1,2],[3,4]])
-        
+print(ans.minTimeToVisitAllPoints([[3,2],[8,4],[5,1]]))
+ """       
 
 """
 # 1365. How Many Numbers Are Smaller Than the Current Number
