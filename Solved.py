@@ -20,32 +20,46 @@ print(ans.getDecimalValue([1,0,1]))
 
 class Solution:
     def destCity(self, paths: List[List[str]]) -> str:
-        """
+        # this is wayyy too long
+        
         # could do a dict
+
+        # could do pairs of the second values
+        destinations = []
+        starting = []
+        total = []
+        for i in range(len(paths)):
+            destinations.append(paths[i][1])
+            starting.append(paths[i][0])
+            
+        total = destinations + starting
+        
         d = {}
-        for number in nums:
-            if number not in d:
-                d[number] = 1
+        for i in total:
+            if i not in d:
+                d[i] = 1
             else:
-                d[number] += 1
+                d[i] += 1
+                
+        final = []  
+        for key, value in d.items():
+            if value == 1:
+                final.append(key)
+        
+        merged = final + destinations
+        
+        d2 = {}
+        for i in merged:
+            if i not in d2:
+                d2[i] = 1
+            else:
+                d2[i] += 1
                 
         for key, value in d.items():
             if value == 1:
-                return key 
+                return key
         
-        """
-        # could do pairs of the second values
-        states = [[]]
-        for i in range(len(paths)):
-                
-        for i in paths:
-            if paths[i][1] not in states[i][0]:
-                states.append(paths[i][1])
-            else:
-                states.remove(paths[i][1])
-        return states
-    
-        
+            
 ans = Solution()
 print(ans.destCity([["London","New York"],["Lima","Sao Paulo"],["New York","Lima"]]))
 
