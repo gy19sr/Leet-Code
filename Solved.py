@@ -6,6 +6,46 @@
 
 from typing import List
 
+"""
+# 1266. Minimum Time Visiting All Points
+# have to vist all points in order from lowest to highest 
+# +1 vert +1 hor or +1 vert 
+class Solution:
+    def minTimeToVisitAllPoints(self, points: List[List[int]]) -> int:
+"""
+  
+        
+
+# COME BACK TO IT
+# 1365. How Many Numbers Are Smaller Than the Current Number
+
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        ans = []
+        l = len(nums)
+        count = 0
+        current = 0
+        for i in range(l):
+            current = nums[i]
+            for i in range(l):
+                if current > nums[i]:
+                    count += 1
+            ans.append(count)
+            count = 0
+        return ans
+
+            
+        
+ans = Solution()
+print(ans.smallerNumbersThanCurrent([6,5,4,8]))
+
+    
+        
+        
+
+
+
+"""
 # 1295. Find Numbers with Even Number of Digits
 
 # fun practice find how many even numbers
@@ -27,7 +67,6 @@ ans = Solution()
 print(ans.findNumbers([12,345,2,6,7896]))
 
 
-
 # now actual solution
 
 class Solution:
@@ -40,41 +79,31 @@ class Solution:
         
         for i in range(l):
             number = nums[i]
-            while number > 1:
+            while number >= 1:
                 number = number / 10
                 count = count + 1
             ans.append(count)
             count = 0
-        
         print(ans)
     
-    
-    
-    
-    
-    
-ans = Solution()
-print(ans.findNumbers([12,345,2,6,7896]))
-
-"""
-# COME BACK TO IT
-# 1365. How Many Numbers Are Smaller Than the Current Number
-
-class Solution:
-    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
-        ans = []
+        ans2 = 0
         i = 0
-        l = len(nums)
-        y = 0 
+        l = len(ans)
         while i < l:
-            if nums[i] >= list next value:
-                ans.append(1)
-            i += 1
-            
-        
+            if ans[i] % 2 == 0:
+                #ans2 + 1
+                ans2 += 1
+                i += 1
+            else:
+                i += 1
+        return ans2
+   
+    
 ans = Solution()
-print(ans.smallerNumbersThanCurrent([8,2,4,3,1]))
+print(ans.findNumbers([100000]))
 """
+
+
 
 
 
