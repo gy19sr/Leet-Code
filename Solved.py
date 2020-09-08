@@ -5,15 +5,119 @@
 #author: stuart
 
 from typing import List
+from random import randint
 
-"""
-# 1290. Convert Binary Number in a linked list to Integer
+
+
+# 1299. Replace Elements with Greatest Element on Right Side
+# last one gets replaced with -1
 
 class Solution:
-    def getDecimalValue(self, head: ListNode) -> int:
+    def replaceElements(self, arr: List[int]) -> List[int]:
+       #arr[i] = max list to the right 
+        # my answer further below is correct but too slow
+        # the trick to reduce on looping is to do in reverse
+        
+    
+        rightMax = -1
+        # reverse iteration
+        # 1st -1 means start at end
+        # sencond means reverse order
+        #third means stop at first
+        for i in range(len(arr) - 1, -1, -1):
+            newMax = max(rightMax, arr[i])
+            arr[i] = rightMax
+            rightMax = newMax
+            return arr
+        
+        
+        
+        """
+        ans = []
+        l = len(arr)
+        temp = 0
+        for i in range(l-1):
+            #print(arr[i + 1])
+            temp = 0
+            while i < l-1:
+                if arr[i + 1] >= temp:
+                    temp = arr[i + 1]
+                    i += 1
+                else:
+                    i +=1
+            ans.append(temp)
+        ans.append(-1)
+        return ans
+                """    
+        
+        
+        
+ans = Solution()
+print(ans.replaceElements([5,11,4,3,5,1,0,5,0]))
+# ans should be  = [18,6,6,6,1,-1]
+
+
+
+"""
+# COME BACK MAKE UNIQUE
+# 1304. Find N Unique Integers Sum up to Zero
+
+#Given an integer n, return any array containing n unique integers
+# such that they add up to 0.
+
+class Solution:
+    def sumZero(self, n: int) -> List[int]:
+        ans = []
+        for i in range(n-1):
+            ans.append(randint(-100,100))
+        
+        unique_list = []
+        for i in ans:
+            if i not in unique_list:
+                unique_list.append(i)
+        lost = len(ans) - len(unique_list)
+        print(lost)
+        
+        
+        d = {}
+        for i in ans:
+            if i not in d:
+                d[i]=1
+            else:
+                d[i] += 1
+                
+        final = []
+        multi = 0
+        for key, value in d.items():
+            while value != 1:
+                multi = key
+            final.append(key)
+                
+            
+        
+        final = []
+        for key, value in d.items():
+            if value == 1:
+                final.append(key)
+            else:
+                key =+ 1
+                
+                
+            
+            
+            
+            
+        addition = sum(ans)
+        addition = addition * -1
+        ans.append(addition)       
+        
+        return ans
 
 ans = Solution()
-print(ans.getDecimalValue([1,0,1]))
+print(ans.sumZero(100))
+"""
+
+
 
 """
 # 1436. Destination City
@@ -62,7 +166,7 @@ class Solution:
             
 ans = Solution()
 print(ans.destCity([["London","New York"],["Lima","Sao Paulo"],["New York","Lima"]]))
-
+"""
 
 
 
