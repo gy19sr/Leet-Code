@@ -9,6 +9,66 @@ from random import randint
 
 
 
+# 728. Self Dividing Numbers
+# A self=dividing num is one that is divisible by every digit it contains
+# not allowed to contain the digit zero
+# lower and upper number bound, output list of every possible self div num
+# including the bounds
+
+# conversion to string
+
+# second solution is not my own but avoids converting to string so faster
+class Solution:
+    def selfDividingNumbers(self, left: int, right: int) -> List[int]:
+        # make a range right - left for which to run through 
+        # then make a list of those numbers starting from left 
+        # Actually for i in range (abs(lef-right))
+            # list.append value[i] + 1
+
+        ans = []
+        temp = []
+        rang = abs(right - left)
+        
+        for i in range(rang):
+            temp.append(left + i)
+        temp.append(right)
+        
+        
+        for i in range(len(temp)):
+            number = temp[i]
+            number = str(number)
+            #print("length",len(number))
+            count = 0 
+            for i in range(len(number)):
+                number2 = int(number)
+                digit = int(number[i])
+                print("number", number2)
+                if digit != 0 and number2 % digit == 0: 
+                    count += 0 
+                else:
+                    count += 1
+            print("count", count)
+            if count == 0:
+                ans.append(int(number))
+                
+                
+        
+        
+        return ans
+        
+    
+
+
+    
+    
+ans = Solution()
+print(ans.selfDividingNumbers((1),(22)))
+
+# ans [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
+
+
+
+"""
 # 1299. Replace Elements with Greatest Element on Right Side
 # last one gets replaced with -1
 
@@ -22,7 +82,7 @@ class Solution:
         rightMax = -1
         # reverse iteration
         # 1st -1 means start at end
-        # sencond means reverse order
+        # second means reverse order
         #third means stop at first
         for i in range(len(arr) - 1, -1, -1):
             newMax = max(rightMax, arr[i])
@@ -31,8 +91,19 @@ class Solution:
             return arr
         
         
+        # second option
+        i = len(arr) - 1
+        mx = arr[i]
+        arr[i] = -1
         
-        """
+        while i > 0:
+            i -= 1
+            arr[i], mx = mx, max(mx, arr[i])
+        
+        return arr
+        
+        
+        
         ans = []
         l = len(arr)
         temp = 0
@@ -48,14 +119,13 @@ class Solution:
             ans.append(temp)
         ans.append(-1)
         return ans
-                """    
+                  
         
-        
-        
+
 ans = Solution()
 print(ans.replaceElements([5,11,4,3,5,1,0,5,0]))
 # ans should be  = [18,6,6,6,1,-1]
-
+"""
 
 
 """
