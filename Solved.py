@@ -9,6 +9,50 @@ from random import randint
 
 
 
+
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        ans = 0
+        l = len(grid)
+        p = 0
+        #grid[i][i] first speaks to wich row second to which number
+        
+        
+        # begin with first row
+        # while value is postive countinue to search for num < 0 
+        # if num less than zero ans += # rows
+        
+        
+        # for the loop set the limit to the ones that are above zero
+        
+        
+        for i in range(l): # run through loop for number of rows
+            # first know how many to add if find a negative value in a row
+            rows = l-i
+           # print(rows)
+            for k in range(len(grid[i]) - p): # for the length of an individual row
+                
+                j = grid[i][k]
+                #print("num value", j)
+                if j < 0:
+                    ans += rows
+                    p += 1
+
+            
+        
+        
+        
+        return ans
+        
+        
+ans = Solution()
+print(ans.countNegatives([[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]))
+
+# ans = 8
+
+
+"""
+
 # 728. Self Dividing Numbers
 # A self=dividing num is one that is divisible by every digit it contains
 # not allowed to contain the digit zero
@@ -36,7 +80,7 @@ class Solution:
         
         for i in range(len(temp)):
             number = temp[i]
-            number = str(number)
+            number = str(number) # all about converting to string
             #print("length",len(number))
             count = 0 
             for i in range(len(number)):
@@ -51,21 +95,34 @@ class Solution:
             if count == 0:
                 ans.append(int(number))
                 
-                
-        
-        
-        return ans
-        
-    
+        return ans    
 
 
-    
+
+        ## Second Soultion ##
+        result = []
+        for n in range(left, right + 1): #didn't know I could do a range between two integers
+            num = n
+            is_self_div = True
+            
+            while num: # interesting need to look at what just while num implies
+                digit = num % 10
+                if not digit or (n % digit) != 0:
+                    is_self_div = False
+                    break
+                num = num // 10
+            
+            if is_self_div:
+                result.append(n) # appending value based on boolen, very cool
+        
+        return result
+  
     
 ans = Solution()
 print(ans.selfDividingNumbers((1),(22)))
 
 # ans [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22]
-
+"""
 
 
 """
