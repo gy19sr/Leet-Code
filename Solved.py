@@ -10,11 +10,62 @@ from random import randint
 
 
 
+
+
+
+
+
+
+
+
+
+
+"""
+######## COME BACK #################
+# 1475. Final Prices With a Special Discount in a Shop
+# prices[i] - price[j]
+# j is the minimum index 
+# if prices[i] >= price[j] and j > i
+
+# so basically the earliest number after the i that is less than it
+# at least I think
+
+
+#if not possible append price
+
+class Solution:
+    def finalPrices(self, prices: List[int]) -> List[int]:
+        ans = []
+        l = len(prices)
+        temp = 0 
+        for i in range(l):
+            temp = prices[i]
+            leng = i + 1
+            while leng < l:
+                print("test")
+                if temp >= prices[i]:
+                    ans.append(temp - prices[i])
+                    leng += 1
+        # append the last
+        return ans
+
+        
+        
+ans = Solution()
+print(ans.finalPrices([8,4,6,2,3]))
+# ans = [4,2,4,2,3]
+"""
+
+
+
+
+
+"""
 class Solution:
     def countNegatives(self, grid: List[List[int]]) -> int:
         ans = 0
         l = len(grid)
-        p = 0
+        p = 0 # the number of columns that have had a negative and have now been counted
         #grid[i][i] first speaks to wich row second to which number
         
         
@@ -49,6 +100,8 @@ ans = Solution()
 print(ans.countNegatives([[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]))
 
 # ans = 8
+"""
+
 
 
 """
