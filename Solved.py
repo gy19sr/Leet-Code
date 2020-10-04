@@ -8,6 +8,86 @@ from typing import List
 from random import randint
 
 
+# 53 Maximum Subarray
+# find the contiguous subarray which has the largest sum and return its sum
+
+
+# lessons learned -
+# loops range (2, 6) = specify the starting value to _ not inclusing 6. if nothing there starts at zero
+# can specify the increment: range(2, 30, 3)
+
+# used below is an ARRAY SLICE syntax
+
+
+#a[start:stop]  # items start through stop-1
+#a[start:]      # items start through the rest of the array
+#a[:stop]       # items from the beginning through stop-1
+#a[:]           # a copy of the whole array
+#a[start:stop:step] # start through not past stop, by step
+
+
+#a[-1]    # last item in the array
+#a[-2:]   # last two items in the array
+#a[:-2]   # everything except the last two items
+
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+
+        curSum = maxSum = nums[0]
+        for num in nums[1:]:
+            curSum = max(num, curSum + num)
+            maxSum = max(maxSum, curSum)
+
+        return maxSum
+        
+        
+        
+        
+        """
+        # my ans timed out
+        leng = len(nums)
+        # so nums[i] then run through second list to find max and update and find nums[i] best leng
+        # I can make a list for each and select the maximum of each list and append to new list
+        max_list=[]
+        for i in range(leng):
+            #print(current_max)
+            current_max=0 
+             # need to remove the first one which will be zero
+            temp_list = []
+            
+            while i < leng:
+                #print(nums[i])
+                current_max += nums[i] 
+                temp_list.append(current_max)
+                i += 1 # try and start at the correct number
+                
+            temp_max = max(temp_list)
+            max_list.append(temp_max)
+        
+        print(max_list)
+        
+       # if len(max_list) > 1:
+           # max_list.pop(0)
+            
+        print(max_list)
+                
+        ans = max(max_list)
+        return ans
+      """  
+        
+        
+ans = Solution()
+print(ans.maxSubArray([-1]))
+
+
+
+
+
+# test input [-2,1,-3,4,-1,2,1,-5,4]
+#output = 6 because of 4,-1,2,1
 
 
 
@@ -21,7 +101,64 @@ from random import randint
 
 
 """
-######## COME BACK #################
+# 1460. Make Two Arrays Equal by Reversing Sub-arrays
+## COME BACK LATER
+
+
+class Solution:
+    def canBeEqual(self, target: List[int], arr: List[int]) -> bool:
+        
+        for i in arr:
+            if i not in arr:
+                return False
+            
+            
+            
+            
+        d = {}
+        for i in target:
+            if i not in d:
+                d[i] = 1
+            else:
+                d[i] =+1
+    
+        
+        d2 = {}
+        for i in target:
+            if i not in d:
+                d2[i] = 1
+            else:
+                d2[i] =+1
+        
+        for key, value in d.items():
+            if key != d2[key]:
+                return key 
+
+        
+        
+        
+ans = Solution()
+print(ans.canBeEqual([1,2,3,4],[2,4,1,3]))
+"""
+
+        
+        
+        
+
+# Input: target = [1,2,3,4], arr = [2,4,1,3]
+# Output: true
+# Explanation: You can follow the next steps to convert arr to target:
+# 1- Reverse sub-array [2,4,1], arr becomes [1,4,2,3]
+# 2- Reverse sub-array [4,2], arr becomes [1,2,4,3]
+# 3- Reverse sub-array [4,3], arr becomes [1,2,3,4]
+# There are multiple ways to convert arr to target, this is not the only way to do so.
+
+
+
+
+
+
+"""
 # 1475. Final Prices With a Special Discount in a Shop
 # prices[i] - price[j]
 # j is the minimum index 
@@ -35,27 +172,25 @@ from random import randint
 
 class Solution:
     def finalPrices(self, prices: List[int]) -> List[int]:
-        ans = []
+        #ans = []
         l = len(prices)
-        temp = 0 
-        for i in range(l):
-            temp = prices[i]
-            leng = i + 1
-            while leng < l:
-                print("test")
-                if temp >= prices[i]:
-                    ans.append(temp - prices[i])
-                    leng += 1
-        # append the last
-        return ans
-
+        i = 0 
+        
+        while i <= l -2:
+            for j in range(i+1, l):
+                if prices[i] >= prices[j] and j > i:
+                    prices[i] = prices[i] - prices[j]
+                    break
+            i += 1
+        return prices
+        
         
         
 ans = Solution()
 print(ans.finalPrices([8,4,6,2,3]))
 # ans = [4,2,4,2,3]
-"""
 
+"""
 
 
 
