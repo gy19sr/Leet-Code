@@ -1,19 +1,209 @@
 # -*- coding: utf-8 -*-
 
-#Created on Tue Sep  1 11:10:25 2020
+# Created on Tue Sep  1 11:10:25 2020
 
-#author: stuart
+# author: stuart
+
+# *** means review
 
 from typing import List
 from random import randint
 
 
+
+
+"""
+# 1588. Sum of All Odd Length Subarrays
+# given an array of positive int., calc the sum of all possible odd-length subarrays
+# return the sum of all odd length sub arrays
+
+# best ans, not brute force
+# https://leetcode.com/problems/sum-of-all-odd-length-subarrays/discuss/854184/JavaC%2B%2BPython-O(N)-Time-O(1)-Space
+
+
+def sumOddLengthSubarrays(self, A):
+    res, n = 0, len(A)
+            for i, a in enumerate(A):
+                res += ((i + 1) * (n - i) + 1) / 2 * a
+            return res
+
+def sumOddLengthSubarrays(self, A):
+    return sum(((i + 1) * (len(A) - i) + 1) / 2 * a for i, a in enumerate(A))
+
+
+
+class Solution:
+    def sumOddLengthSubarrays(self, arr: List[int]) -> int:
+        # need to figure out how many odd length sub arrays there are
+        # can just sum all values to start for subarray length one
+        # a[start:stop:step]
+        # loops range (2, 6)
+        ans = 0
+
+        # need to create loop that creates 1s, then 3s, then 5s, etc
+        # maybe a while loop
+
+        # okay I will create sub arrays increasing by two in length each time
+        # and I will subtract the earliest and add latest as long as fits in array
+
+        ans += sum(arr)
+        # for practice let's just do it with 3 for sub array length
+
+        # for magical num start from 1 and + 2 until length of array
+        # need to consider if array length is 6 how that would work
+        k = 1
+        while k <= len(arr):
+            for i in range(len(arr)):
+                sub = arr[i:i+k]
+                leng = len(sub)
+                if leng % 2 == 1 and leng != 1 and leng == k:
+                    print(sub) # I ACCIDENTLY LEFT THIS IN SO IT COUNTED AS WRONG!!
+                    ans += sum(sub)
+            k += 2
+
+        return ans
+ans = Solution()
+print(ans.sumOddLengthSubarrays([1,4,2,5,3,5,8]))
+# exp. input: [1,4,2,5,3]
+# output = 58
+"""
+
+"""
+# 1450. Number of Students Doing Homework at a Given Time
+#Given two integer arrays startTime and endTime
+# and given an integer queryTime.
+# Return the number of students doing their homework at time queryTime
+
+
+# best answer
+#return sum(s <= queryTime <= e for s, e in zip(startTime, endTime))
+# zip(), what it does is merge like below
+# number_list = [1, 2, 3]
+# str_list = ['one', 'two', 'three']
+# {(1, 'one'), (2, 'two'), (3, 'three')}
+
+class Solution:
+    def busyStudent(self, startTime: List[int], endTime: List[int], queryTime: int) -> int:
+        ans = 0
+        time = queryTime
+        leng = len(startTime)
+        for i in range(leng):
+            temp_list = list(range(startTime[i], endTime[i]))
+            temp_list.append(endTime[i])
+            for i in range(len(temp_list)):
+                if time == temp_list[i]:
+                    ans += 1
+
+            print(temp_list)
+        return ans
+
+ans = Solution()
+print(ans.busyStudent([4],[4],4))
+
+# example input start [1,2,3], endtime = [3,2,7], queryTime =4
+"""
+
+
+"""
+# 26. remove duplicates from sorted Array
+# given a sorted array nums, remove dups in place so each only appears once
+# returns new length
+
+# remove() removes the first matching value/object. It does not do anything with the indexing.
+# pop() removes at a specific index and returns it
+# del() removes the item at a specific index.
+
+# best solution
+# nums[:] = sorted(set(nums))
+# return len(nums)
+
+
+# nums[:] means whole list
+# set() gets the unique values for an entire list seems to automatically sort them
+# sorted () makes sure they're in order
+
+
+#nums = [1,2,4,5,3,3,2,2,2,2]
+#nums[:] = sorted(set(nums))
+#return len(nums)
+#print(nums[:])
+
+#print("end of testing")
+
+class Solution():
+    def removeDuplicates(self, nums: List[int]) -> int:
+        # so i will create a dictionary where any values greater than one will be reduced to just one occurence
+        d = {}
+        for i in nums: # so with a dictionary need to use the actual list not range(leng)
+            if i not in d:
+                d[i] = 1
+            else:
+                d[i] += 1
+
+        for key, value in d.items():
+            if value > 1:
+                temp = value - 1
+                #print(temp)
+                for i in range(temp):
+                    nums.remove(key)
+
+        return len(nums)
+
+ans = Solution()
+print(ans.removeDuplicates([1,1,2,1,1]))
+# function return len(num) = 5
+
+
+#exp nums = [1,1,2]
+#expected output 2
+"""
+
+"""
+
+# 70 Climbing Stairs
+# each time yo can climb 1 or 2 steps. in how many distinct ways 
+# can you climb to the top?
+
+# *** this is a classic question 
+# recursive programming
+# Dynamic Programming, bottem up
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        ##dp = []
+        ##dp[1] = 1 #as there is only one way to climb 1 step
+        dp = [1] * (n + 1) # as you know 1 step is equal to one
+        # so next can thin about number of ways for two steps
+        # you start loop at second position because we know 1 and 
+        # you just add 1 to the n
+        for i in range(2, n + 1):
+            # so now we know for value n 
+            # we've come from either one or two steps before the current value
+            dp[i] = dp[i - 1] + dp[i -2] # so to get to i there were only the two ways listed here
+            #adding them works to figure out dp[i]
+        
+        
+        return dp[n]
+
+       
+        
+        
+ans = Solution()
+print(ans.climbStairs(3))
+        
+# input example 3
+# output 3 Because 1+1+1, 1+2, 2+1
+
+"""
+
+
+"""
 # 53 Maximum Subarray
 # find the contiguous subarray which has the largest sum and return its sum
 
 
 # lessons learned -
-# loops range (2, 6) = specify the starting value to _ not inclusing 6. if nothing there starts at zero
+# loops range (2, 6) = specify the starting value to not including 6. if nothing there starts at zero
 # can specify the increment: range(2, 30, 3)
 
 # used below is an ARRAY SLICE syntax
@@ -31,6 +221,12 @@ from random import randint
 #a[:-2]   # everything except the last two items
 
 
+#a[::-1]    # all items in the array, reversed
+#a[1::-1]   # the first two items, reversed
+#a[:-3:-1]  # the last two items, reversed
+#a[-3::-1]  # everything except the last two items, reversed
+
+
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         if not nums:
@@ -43,11 +239,10 @@ class Solution:
 
         return maxSum
         
+          
         
-        
-        
-        """
-        # my ans timed out
+
+        # my ans timed out, but listed below
         leng = len(nums)
         # so nums[i] then run through second list to find max and update and find nums[i] best leng
         # I can make a list for each and select the maximum of each list and append to new list
@@ -76,15 +271,11 @@ class Solution:
                 
         ans = max(max_list)
         return ans
-      """  
+
         
         
 ans = Solution()
 print(ans.maxSubArray([-1]))
-
-
-
-
 
 # test input [-2,1,-3,4,-1,2,1,-5,4]
 #output = 6 because of 4,-1,2,1
@@ -92,17 +283,13 @@ print(ans.maxSubArray([-1]))
 
 
 
+"""
 
-
-
-
-
-
-
+# put onto website above
 
 """
 # 1460. Make Two Arrays Equal by Reversing Sub-arrays
-## COME BACK LATER
+## *** COME BACK LATER
 
 
 class Solution:
@@ -141,9 +328,7 @@ ans = Solution()
 print(ans.canBeEqual([1,2,3,4],[2,4,1,3]))
 """
 
-        
-        
-        
+
 
 # Input: target = [1,2,3,4], arr = [2,4,1,3]
 # Output: true
@@ -152,9 +337,6 @@ print(ans.canBeEqual([1,2,3,4],[2,4,1,3]))
 # 2- Reverse sub-array [4,2], arr becomes [1,2,4,3]
 # 3- Reverse sub-array [4,3], arr becomes [1,2,3,4]
 # There are multiple ways to convert arr to target, this is not the only way to do so.
-
-
-
 
 
 
@@ -535,8 +717,6 @@ print(ans.smallerNumbersThanCurrent([6,5,4,8]))
 """
     
         
-        
-
 
 
 """
@@ -746,7 +926,6 @@ print(ans.runningSum([1,2,3,4]))
         
 
 
-
 """
 # 1431. Kids With the Greatest Number of Candies
 # print bool list of whether kids can have the most in the list
@@ -774,8 +953,6 @@ class Solution:
 answer = Solution()
 print(answer.kidsWithCandies([14,4,8],7))
 """
-
-
 
 
 """
