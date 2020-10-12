@@ -9,6 +9,86 @@
 from typing import List
 from random import randint
 
+# 961. N-Repeated Element in Size 2N Array
+
+# In a array A of size 2N, there are N+1 unique elements,
+# and exactly one of these elements is repeated N times.
+
+# Return the element repeated N times.
+
+# dic is first idea for a solution
+
+class Solution:
+    def repeatedNTimes(self, A: List[int]) -> int:
+        d = {}
+        l = len(A)
+        N =l/2
+        for i in A:
+            if i not in d:
+                d[i] = 1
+            else:
+                d[i] += 1
+        for key, value in d.items():
+            if value == N:
+                return key
+
+
+
+ans = Solution()
+print(ans.repeatedNTimes([2,1,2,5,3,2]))
+
+# Exp:
+# Input: [1,2,3,3]
+# Output: 3
+
+# Input: [5,1,5,2,5,3,5,4]
+# Output: 5
+
+
+
+
+"""
+# 1534. Count Good Triplets
+
+#Given an array of integers arr, and
+#three integers a, b and c. You need to find the number of good triplets.
+#A triplet (arr[i], arr[j], arr[k]) is good if the following conditions are true:
+
+# 0 <= i < j < k < arr.length
+# |arr[i] - arr[j]| <= a
+# |arr[j] - arr[k]| <= b
+# |arr[i] - arr[k]| <= c
+
+
+# a[start:stop:step] # start through not past stop, by step
+# can specify the increment: range(2, 30, 3)
+
+class Solution:
+    def countGoodTriplets(self, arr: List[int], a: int, b: int, c: int) -> int:
+        # if it's less than or = to A then continue to next loop level
+        # if it's less than or = to B check c
+        # if <= c ans +1
+
+        l = len(arr)
+        ans = 0
+
+        for i in range(l):
+            for k in range(i + 1, l):
+                if abs(arr[i] - arr[k]) > c: continue
+                ans += sum(abs(arr[i] - arr[j]) <= a and abs(arr[j] - arr[k]) <= b
+                              for j in range(i + 1, k))
+        return ans
+
+
+ans = Solution()
+print(ans.countGoodTriplets([3,0,1,1,9,7], 7, 2, 3))
+
+
+
+# exp input [3,0,1,1,9,7], a = 7, b = 2, c = 3
+# output: 4
+# explanation There are 4 good triplets: [(3,0,1), (3,0,1), (3,1,1), (0,1,1)]
+"""
 
 
 
@@ -158,8 +238,9 @@ print(ans.removeDuplicates([1,1,2,1,1]))
 #expected output 2
 """
 
-"""
+# put onto website above
 
+"""
 # 70 Climbing Stairs
 # each time yo can climb 1 or 2 steps. in how many distinct ways 
 # can you climb to the top?
@@ -170,8 +251,8 @@ print(ans.removeDuplicates([1,1,2,1,1]))
 
 class Solution:
     def climbStairs(self, n: int) -> int:
-        ##dp = []
-        ##dp[1] = 1 #as there is only one way to climb 1 step
+        dp = []
+        dp[1] = 1 #as there is only one way to climb 1 step
         dp = [1] * (n + 1) # as you know 1 step is equal to one
         # so next can thin about number of ways for two steps
         # you start loop at second position because we know 1 and 
@@ -181,8 +262,6 @@ class Solution:
             # we've come from either one or two steps before the current value
             dp[i] = dp[i - 1] + dp[i -2] # so to get to i there were only the two ways listed here
             #adding them works to figure out dp[i]
-        
-        
         return dp[n]
 
        
@@ -226,9 +305,21 @@ print(ans.climbStairs(3))
 #a[:-3:-1]  # the last two items, reversed
 #a[-3::-1]  # everything except the last two items, reversed
 
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        curSum = maxSum = nums[0]
+        for num in nums[1:]:
+            curSum = max(num, curSum + num)
+            maxSum = max(maxSum, curSum)
+
+        return maxSum
+
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
+
         if not nums:
             return 0
 
@@ -285,7 +376,7 @@ print(ans.maxSubArray([-1]))
 
 """
 
-# put onto website above
+
 
 """
 # 1460. Make Two Arrays Equal by Reversing Sub-arrays
@@ -326,7 +417,7 @@ class Solution:
         
 ans = Solution()
 print(ans.canBeEqual([1,2,3,4],[2,4,1,3]))
-"""
+
 
 
 
@@ -338,7 +429,7 @@ print(ans.canBeEqual([1,2,3,4],[2,4,1,3]))
 # 3- Reverse sub-array [4,3], arr becomes [1,2,3,4]
 # There are multiple ways to convert arr to target, this is not the only way to do so.
 
-
+"""
 
 """
 # 1475. Final Prices With a Special Discount in a Shop
