@@ -8,7 +8,41 @@
 
 from typing import List
 from random import randint
+import pandas as pd
 
+# 1323. Maximum 69 Number
+# Given a positive integer num consisting only of digits 6 and 9.
+
+# Return the maximum number you can get by changing at
+# most one digit (6 becomes 9, and 9 becomes 6).
+
+# learned how to convert from int to list
+# and list to int
+
+class Solution:
+    def maximum69Number (self, num: int) -> int:
+        print(num)
+        # one option is to convert to a list
+        res = [int(x) for x in str(num)]
+        # another option is to divide 9669 by % 6, 60, 600 for
+        # each and if not 0 then change to 9
+        for i in range(len(res)):
+            if res[i] % 9 != 0:
+                res[i] = 9
+                break
+        strings = [str(x) for x in res]
+        a_string = "".join(strings)
+        ans = int(a_string)
+        return ans
+
+
+
+ans = Solution()
+print(ans.maximum69Number(9669))
+# exp input = 9669
+# exp output = 9969
+
+"""
 # 961. N-Repeated Element in Size 2N Array
 
 # In a array A of size 2N, there are N+1 unique elements,
@@ -43,8 +77,7 @@ print(ans.repeatedNTimes([2,1,2,5,3,2]))
 
 # Input: [5,1,5,2,5,3,5,4]
 # Output: 5
-
-
+"""
 
 
 """
