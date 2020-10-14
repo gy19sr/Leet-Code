@@ -10,6 +10,61 @@ from typing import List
 from random import randint
 import pandas as pd
 
+
+
+
+"""
+# 1561. Maximum Number of Coins You Can Get
+# There are 3n piles of coins of varying size, you and your friends will take piles of coins as follows:
+
+# In each step, you will choose any 3 piles of coins (not necessarily consecutive).
+# Of your choice, Alice will pick the pile with the maximum number of coins.
+# You will pick the next pile with maximum number of coins.
+# Your friend Bob will pick the last pile.
+# Repeat until there are no more piles of coins.
+
+# Given an array of integers piles where piles[i] is the number of coins in the ith pile.
+# Return the maximum number of coins which you can have.
+
+class Solution:
+    def maxCoins(self, piles: List[int]) -> int:
+        # best answer
+        # mistake was that I didn't think about sorting
+        # leet code will def time out if a loop inside a loop
+        
+        return sum(sorted(piles)[len(piles)//3 :: 2])
+        
+        
+        # Answer worked but it timed out 
+        # this time I will actually make the sub arrays
+        # 1. search the list
+        # 2. take the largest two and smallest and remove from list
+        # 3. add sub arrays second value to my coin count
+        # 4. repeat until all coins are gone from list length ie if list / 3 = 0
+        
+        temp_array = []
+        ans = 0
+        for i in range(len(piles)):
+            if len(piles) == 0:
+                break
+            temp_array = []
+            for i in range(2):
+                temp_array.append(max(piles))
+                piles.remove(max(piles))
+            temp_array.append(min(piles))
+            piles.remove(min(piles))
+            ans += temp_array[1]
+        return ans
+
+
+        
+
+ans =Solution()
+print(ans.maxCoins([9,8,7,6,5,1,2,3,4]))
+"""
+
+
+"""
 # 709. To Lower Case
 # function that has a string parameter str, and returns the same string in lower case
 
@@ -22,6 +77,10 @@ ans = Solution()
 print(ans.toLowerCase("Hello"))
 
 # also try and just use the function, not in the above print method.
+test = "This Is a TesT STring"
+
+print(ans.toLowerCase(test))
+"""
 
 
 """
