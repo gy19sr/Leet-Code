@@ -10,6 +10,51 @@ from typing import List
 from random import randint
 import pandas as pd
 
+# 709. To Lower Case
+# function that has a string parameter str, and returns the same string in lower case
+
+class Solution:
+    def toLowerCase(self, str: str) -> str:
+        string = str
+        return string.lower()
+
+ans = Solution()
+print(ans.toLowerCase("Hello"))
+
+# also try and just use the function, not in the above print method.
+
+
+"""
+# ***
+# 419. Battleships in a Board
+
+# Given an 2D board, count how many battleships are in it. The
+# battleships are represented with 'X's,
+# empty slots are represented with '.'s.
+# You may assume the following rules:
+
+# only '.' and 'x'
+# BS can be hor or vert and any length
+# there are none adjacent
+
+class Solution:
+    def countBattleships(self, board: List[List[str]]) -> int:
+        if len(board) == 0: return 0
+        m, n = len(board), len(board[0])
+        count = 0
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == 'X' and (i == 0 or board[i - 1][j] == '.') and (j == 0 or board[i][j - 1] == '.'):
+                    count += 1
+        return count
+
+ans = Solution()
+print(ans.countBattleships([['X','.','.','.'], ['.','.','.','X'], ['X','.','.','X']]))
+
+"""
+
+
+"""
 # 1323. Maximum 69 Number
 # Given a positive integer num consisting only of digits 6 and 9.
 
@@ -18,6 +63,14 @@ import pandas as pd
 
 # learned how to convert from int to list
 # and list to int
+# convert int to string
+   # res = [int(x) for x in str(num)]
+# convert back
+   # temp = [str(x) for x in res]
+   # string = "".join(temp)
+   # ans = int(string)
+    
+    
 
 class Solution:
     def maximum69Number (self, num: int) -> int:
@@ -41,6 +94,8 @@ ans = Solution()
 print(ans.maximum69Number(9669))
 # exp input = 9669
 # exp output = 9969
+"""
+
 
 """
 # 961. N-Repeated Element in Size 2N Array
