@@ -12,6 +12,74 @@ import pandas as pd
 
 
 
+""""
+# 832 Flipping an Image
+# first reverse a row
+# then invert the row val = 1 - val
+
+# learned reverse and
+
+class Solution():
+    def flipAndInvertImage(selfself, A: List[List[int]]) -> List[List[int]]:
+        l = len(A)
+        l2 = len(A[0])
+        for i in range(l):
+            A[i].reverse()
+            for j in range(l2):
+                A[i][j] = 1 - A[i][j]
+        return A
+
+
+
+ans = Solution()
+print(ans.flipAndInvertImage([[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]))
+"""
+
+
+""" ***
+# Given a m * n matrix mat of integers, sort it diagonally in ascending order
+# from the top-left to the bottom-right then return the sorted array.
+# print(points[0][0]) # first speaks to the coordinates pair second speaks to x or y
+
+class Solution:
+    def diagonalSort(self, mat: List[List[int]]) -> List[List[int]]:
+        # print(sorted(mat[0])) # I'm not sorting
+        # make sub arrays
+        # if mat[i][j] >= mat[i+1][j+1]
+        # mat[i][j] == mat[i+1][j+1] and vise versa
+
+        # if i > 0 and k > 0:
+            # look above after looking down
+
+        l = len(mat)
+        l2 = len(mat[0])
+        for i in range(l - 1):
+            k = 0
+            while k < (l2 - 1):
+                if mat[i][k] >= mat[i+1][k+1] and i == 0 and k == 0:
+                    temp = mat[i][k]
+                    temp2 = mat[i + 1][k + 1]
+                    mat[i][k] = temp2
+                    mat[i + 1][k + 1] = temp
+
+                if i > 0 and k > 0 and mat[i][k] >= mat[i-1][k-1]: # right now only does it if one below was lower than current
+                    temp = mat[i][k]
+                    temp2 = mat[i - 1][k - 1]
+                    mat[i][k] = temp2
+                    mat[i - 1][k - 1] = temp
+                k += 1
+
+
+
+
+        return mat
+
+ans = Solution()
+print(ans.diagonalSort([[3,3,1,1],[2,2,1,2],[1,1,1,2]]))
+
+# exp: input mat = [[3,3,1,1],[2,2,1,2],[1,1,1,2]]
+# output [[1,1,1,1],[1,2,2,2],[1,2,3,3]]
+"""
 
 """
 # 1561. Maximum Number of Coins You Can Get
