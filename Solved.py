@@ -11,6 +11,71 @@ from random import randint
 import pandas as pd
 
 
+"""
+# Oct challange
+# Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
+
+# Integers in each row are sorted from left to right.
+# The first integer of each row is greater than the last integer of the previous row.
+
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        # so it's a well sorted matrix
+        if matrix == []:
+            return False
+        if matrix == [[]]:
+            return False
+        l = len(matrix)
+        l2 = len(matrix[0])
+
+        for i in range(l):
+            if target <= matrix[i][-1]:
+                for j in range(l2):
+                    if target == matrix[i][j]:
+                        return True
+                return False
+        return False
+
+
+ans = Solution()
+print(ans.searchMatrix([], 0))
+
+
+# exp input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,50]], target = 3
+# output: true
+"""
+
+
+"""
+# Oct Challange 15th week 3
+# Given an array, rotate the array to the right by k steps, where k is non-negative.
+
+# got practice with remove
+# list.remove(value) [-1] = last in list
+# and append
+# .insert (position, value)
+# .insert(0, nums[-1]
+
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        # should return none, as just modify nums in-place instead
+        for i in range(k):
+            nums.insert(0, nums[-1])
+            nums.pop()
+
+
+
+ans = Solution()
+print(ans.rotate([-1,-100,3,99], 2))
+# exp: nums = [1,2,3,4,5,6,7], k = 3
+# output: [5,6,7,1,2,3,4]
+# Explanation:
+# rotate 1 steps to the right: [7,1,2,3,4,5,6]
+# rotate 2 steps to the right: [6,7,1,2,3,4,5]
+# rotate 3 steps to the right: [5,6,7,1,2,3,4]
+"""
+
 
 """"
 # 832 Flipping an Image
