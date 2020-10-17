@@ -11,6 +11,67 @@ from random import randint
 import pandas as pd
 
 
+# remove bottem 5 and largest 5% of integers
+
+class Solution:
+    def trimMean(self, arr: List[int]) -> float:
+        temp = []
+        l = len(arr)
+        num_rem = (l/20)
+        num_rem = int(num_rem)
+        print(num_rem)
+        temp = sorted(arr)
+
+        for i in range(num_rem):
+            temp = temp[:-1]
+            temp.pop(0)
+        l = len(temp)
+
+
+        return (sum(temp) / l)
+
+
+
+ans = Solution()
+print(ans.trimMean([6,0,7,0,7,5,7,8,3,4,0,7,8,1,6,8,1,1,2,4,8,1,9,5,4,3,8,5,10,8,6,6,1,0,6,10,8,2,3,4]))
+
+#arr = [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3]
+#2.00000
+
+
+"""
+# Oct challange 17th
+
+# find all the 10 letter substrings that occur more than once
+
+class Solution:
+    def findRepeatedDnaSequences(self, s: str) -> List[str]:
+        print(len(s))
+        # make a dict
+        # if value more
+        d = {}
+        myl = []
+
+
+        for i in s:
+            # so first print sub array of 10
+            myl.append(i)
+
+        # great now how do I make a sub array of 10
+
+        for i in range(len(myl)):
+            temp = myl[i][:10]
+            print(temp)
+
+
+ans = Solution()
+print(ans.findRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"))
+
+# Input: s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"
+# Output: ["AAAAACCCCC","CCCCCAAAAA"]
+"""
+
+
 """
 # Oct challange
 # Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the following properties:
@@ -1147,8 +1208,6 @@ class Solution:
 ans = Solution()
 print(ans.findNumbers([100000]))
 """
-
-
 
 
 
