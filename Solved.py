@@ -11,6 +11,8 @@ from random import randint
 import pandas as pd
 import numpy as np
 
+#scipy
+#flask
 
 
 """
