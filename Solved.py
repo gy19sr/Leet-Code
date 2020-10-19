@@ -9,9 +9,111 @@
 from typing import List
 from random import randint
 import pandas as pd
+import numpy as np
 
 
+
+"""
+***
+???? No idea how to go about this
+# Oct Challange day 19th
+
+class Solution:
+    def maxProfit(self, k: int, prices: List[int]) -> int:
+        # find the greatest difference between two nums
+        # the left num needs to be the lower one
+        # so I think start by finding the greatest differences from that point onward
+            #ie for 3 it's 3 and 6
+            # for 2 it's 2 and 6
+            # for 6 it's 5 at a loss of 1
+        l = len(prices)
+        for i in range(l):
+            diff = 0
+            temp = []
+            j = i
+            while j < l:
+                diff = 
+                temp.append(prices[j])
+                j += 1
+            print(temp)
+
+
+ans = Solution()
+print(ans.maxProfit(2, [3,2,6,5,0,3]))
+# k = maximum # of transactions, buy and sell = 1 trans
+# day to day price
+
+# Input: k = 2, prices = [2,4,1]
+# Output: 2
+# Explanation: Buy on day 1 (price = 2) and sell on day 2 (price = 4), profit = 4-2 = 2.
+"""
+
+
+""" ***
+#695. Max Area of Island
+
+#if board[i][j] == 'X' and (i == 0 or board[i - 1][j] == '.') and (j == 0 or board[i][j - 1] == '.'):
+         #           count += 1
+
+
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        # Okay so i think...
+        # search row for 1 if 1 search surrounding
+        # add for each surrounding to current max
+
+        # so first search to the right, and count how many to the right
+        # then count how many down
+        m, n = len(grid), len(grid[0])
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 1:
+                    while k != 0:
+                        (grid[i][j + 1] == 1)
+                    print([i,j])
+                    # so lets just look left and right to start
+                    # then in next row see if below any of the outlined
+
+
+
+ans = Solution()
+print(ans.maxAreaOfIsland([
+ [0,0,1,0,0,0,0,1,0,0,0,0,0],
+ [0,0,0,0,0,0,0,1,1,1,0,0,0],
+ [0,1,1,0,1,0,0,0,0,0,0,0,0],
+ [0,1,0,0,1,1,0,0,1,0,1,0,0],
+ [0,1,0,0,1,1,0,0,1,1,1,0,0],
+ [0,0,0,0,0,0,0,0,0,0,1,0,0],
+ [0,0,0,0,0,0,0,1,1,1,0,0,0],
+ [0,0,0,0,0,0,0,1,1,0,0,0,0]]))
+
+# answer should return 6
+"""
+
+"""
+# practice dict
+class Solution:
+    def test(self, A: List[int])-> int:
+        d = {}
+        for i in A:
+            if i not in d:
+                d[i] = 1
+            else:
+                d[i] += 1
+        for key, value in d.items():
+            if value >= 2:
+                return key
+
+        return False
+
+ans = Solution()
+print(ans.test([1,2,3,2,4]))
+"""
+
+
+"""
 # remove bottem 5 and largest 5% of integers
+# learnt = pop() and slice with df[:-1] = list without last
 
 class Solution:
     def trimMean(self, arr: List[int]) -> float:
@@ -37,6 +139,8 @@ print(ans.trimMean([6,0,7,0,7,5,7,8,3,4,0,7,8,1,6,8,1,1,2,4,8,1,9,5,4,3,8,5,10,8
 
 #arr = [1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3]
 #2.00000
+"""
+
 
 
 """
