@@ -50,8 +50,41 @@ print(ans.maxProfit(2, [3,2,6,5,0,3]))
 # Explanation: Buy on day 1 (price = 2) and sell on day 2 (price = 4), profit = 4-2 = 2.
 """
 
+# 463. Island Perimeter
+# there is only one island
 
-""" ***
+class Solution:
+    def islandPerimeter(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        ans = 0
+        # basically start with 4 for each 1 and subtract 1 for each neighbor
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 1:
+                    ans += 4
+                    if i != 0:
+                        if grid[i-1][j] == 1:
+                            ans -= 1
+                    if i != m-1:
+                        if grid[i+1][j] == 1:
+                            ans -= 1
+                    if j != 0:
+                        if grid[i][j-1] == 1:
+                            ans -= 1
+                    if j != n-1:
+                        if grid[i][j+1] == 1:
+                            ans -= 1
+        return ans
+
+
+
+ans = Solution()
+print(ans.islandPerimeter([[1,0]]))
+#grid = [[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]
+    #Output: 16
+
+""""
+# ***
 #695. Max Area of Island
 
 #if board[i][j] == 'X' and (i == 0 or board[i - 1][j] == '.') and (j == 0 or board[i][j - 1] == '.'):
@@ -70,12 +103,12 @@ class Solution:
         for i in range(m):
             for j in range(n):
                 if grid[i][j] == 1:
-                    while k != 0:
-                        (grid[i][j + 1] == 1)
+                    #while j != 0:
+                        #j = grid[i][j + 1]
+
                     print([i,j])
                     # so lets just look left and right to start
                     # then in next row see if below any of the outlined
-
 
 
 ans = Solution()
