@@ -14,6 +14,68 @@ import numpy as np
 #scipy
 #flask
 
+# october challange
+# Asteroid Collisions
+
+# abs = size, + | - == direction, all same speed
+# if collide < destroyed, if == both destroyed
+# [] -> []
+
+# learning about the dangers of removal, always best to make a new list
+
+class Solution:
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        # run through list
+        # if going in same direction don't do a thing
+        # only if +, - you must .remove() the smaller
+        result = []
+        for a in asteroids:
+            result.append(a)
+            while len(result) > 1 and result[-1] < 0 and result[-2] > 0:
+                last = result.pop()
+                if abs(last) == result[-1]:
+                    result.pop()
+                elif abs(last) > result[-1]:
+                    result[-1] = last
+        return result
+ans = Solution()
+print(ans.asteroidCollision([10,2,-5]))
+
+
+
+"""
+# 1572 Matrix Diagonal Sum
+
+# Given a square matrix mat, return the sum of the matrix diagonals.
+# only primary diagonals and each only counted once
+
+
+class Solution:
+    def diagonalSum(self, mat):
+        ans = 0
+        l, l2 = len(mat), len(mat[0])
+        j = 0
+        for i in range(l):
+            ans += mat[i][j]
+            j += 1
+            ans += mat[i][-j]
+       # j = 1
+       # for i in range(l):
+        #    ans += mat[i][-j]
+         #   j += 1
+        i = 1
+        if l % 2 != 0 and ((l2) % 2 != 0):
+            ans -= mat[i*int(l/2)][i*int(l2/2)]
+        return ans
+
+
+ans = Solution()
+print(ans.diagonalSum([[1,1,1,1],
+              [1,1,1,1],
+              [1,1,1,1],
+              [1,1,1,1]]))
+"""
+
 
 """
 ***
@@ -50,6 +112,8 @@ print(ans.maxProfit(2, [3,2,6,5,0,3]))
 # Explanation: Buy on day 1 (price = 2) and sell on day 2 (price = 4), profit = 4-2 = 2.
 """
 
+
+"""
 # 463. Island Perimeter
 # there is only one island
 
@@ -82,6 +146,8 @@ ans = Solution()
 print(ans.islandPerimeter([[1,0]]))
 #grid = [[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]
     #Output: 16
+"""
+
 
 """"
 # ***
