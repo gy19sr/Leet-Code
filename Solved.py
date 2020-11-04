@@ -14,6 +14,56 @@ import numpy as np
 #scipy
 #flask
 
+#27. Remove Element
+
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        l = len(nums)
+        #nums.remove(val)
+        count = 0
+        for i in range(l):
+            if nums[i] == val:
+                count += 1
+
+        for i in range(count):
+            nums.remove(val)
+
+        return len(nums)
+
+
+ans = Solution()
+print(ans.removeElement([0,1,2,2,3,0,4,2], 2))
+
+
+"""
+# 1464. Maximum Product of Two Elements in an Array
+# Given the array of integers nums, you will choose two different indices i and j of that array.
+# Return the maximum value of (nums[i]-1)*(nums[j]-1).
+
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        # seems to me like the largest 2 nums
+        temp_1 = max(nums)
+        nums.remove(temp_1)
+        temp_2 = max(nums)
+        ans = (temp_1 - 1) * (temp_2 - 1)
+
+        return ans
+
+
+ans = Solution()
+print(ans.maxProduct([0,0]))
+
+
+
+# exp 1 input = [3,4,5,2]
+# output = 12
+# as (nums[1]-1)*(nums[2]-1)
+"""
+
+
+
+"""
 # october challange
 # Asteroid Collisions
 
@@ -40,7 +90,7 @@ class Solution:
         return result
 ans = Solution()
 print(ans.asteroidCollision([10,2,-5]))
-
+"""
 
 
 """
